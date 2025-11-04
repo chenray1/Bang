@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>個人網站</title>
+
+  <!-- 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Nunito+Sans:wght@300;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f5f6f6;
+      --text: #0b0b0b;
+      --muted: #6b6b6b;
+      --accent1: #f0a500; /* resume */
+      --accent2: #ff4f4f; /* projects */
+      --accent3: #74d3d0; /* contact */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Nunito Sans", "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:40px auto;
+      padding:40px 24px;
+      display:flex;
+      align-items:center;
+      gap:40px;
+    }
+
+    /* 左側大圓照片 */
+    .photo-wrap{
+      flex: 0 0 46%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-width:320px;
+    }
+    .photo{
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      overflow:hidden;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.06);
+      border: 10px solid rgba(255,255,255,0.6);
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: grayscale(1) contrast(0.95);
+    }
+
+    /* 右側內容 */
+    .content{
+      flex: 1;
+      padding:10px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+      min-width:300px;
+    }
+
+    .greeting{
+      font-family:"Montserrat", sans-serif;
+      font-weight:800;
+      font-size:96px;
+      line-height:0.9;
+      margin:0;
+      letter-spacing:-2px;
+    }
+
+    .about-title{
+      font-weight:700;
+      margin:8px 0 6px 0;
+      font-size:18px;
+    }
+    .about-text{
+      color:var(--muted);
+      max-width:420px;
+      line-height:1.65;
+      margin:0 0 18px 0;
+      font-size:14px;
+    }
+
+    /* 三個圓形按鈕 */
+    .circles{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      margin-top:6px;
+    }
+
+    .circle{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      text-decoration:none;
+      color:#111;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.08);
+      border:6px solid rgba(0,0,0,0.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+      font-family: "Montserrat", sans-serif;
+      text-align:center;
+    }
+    .circle:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+
+    .c-resume{ background:var(--accent1); }
+    .c-projects{ background:var(--accent2); color:#140909; }
+    .c-contact{ background:var(--accent3); }
+
+    .circle span{
+      display:block;
+      padding:0 8px;
+      font-size:16px;
+    }
+
+    /* 小斷點微調 */
+    @media (max-width:1100px){
+      .container{flex-direction:column; align-items:center; gap:28px; padding:28px}
+      .photo{width:420px;height:420px}
+      .greeting{font-size:64px; text-align:center}
+      .content{align-items:center;text-align:center}
+      .about-text{max-width:640px}
+    }
+
+    @media (max-width:500px){
+      .photo{width:300px;height:300px}
+      .greeting{font-size:44px}
+      .circles{flex-wrap:wrap; justify-content:center}
+      .circle{width:100px;height:100px}
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- 左側照片（把檔名改成 myphoto.jpg 並放在同一資料夾） -->
+    <div class="photo-wrap" aria-hidden="true">
+      <div class="photo">
+        <img src="myphoto.jpg" alt="個人照片">
+      </div>
+    </div>
+
+    <!-- 右側內容 -->
+    <section class="content" aria-label="關於我">
+      <h1 class="greeting">Hello</h1>
+
+      <div>
+        <h3 class="about-title">A Bit About Me</h3>
+        <p class="about-text">
+          我是（你的名字） — 這裡放簡短自我介紹或個人宣言。你可以寫你擅長的技能、目前職務或正在做的專案。這段文字是讓訪客快速了解你的地方。
+        </p>
+      </div>
+
+      <div class="circles" role="navigation" aria-label="作品連結">
+        <!-- 三個圓形按鈕：預設指向 PDF 與聯絡頁（可改） -->
+        <a class="circle c-resume" href="work1.pdf" target="_blank" rel="noopener noreferrer" title="Resume / 作品1">
+          <span>Resume</span>
+        </a>
+
+        <a class="circle c-projects" href="work2.pdf" target="_blank" rel="noopener noreferrer" title="Projects / 作品2">
+          <span>Projects</span>
+        </a>
+
+        <a class="circle c-contact" href="work3.pdf" target="_blank" rel="noopener noreferrer" title="Contact / 作品3">
+          <span>Contact</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
